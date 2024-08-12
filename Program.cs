@@ -107,6 +107,23 @@ internal class Program
         Console.WriteLine(person4.Name);
         Console.WriteLine(person4.FavoriteColor);
         
+
+        // Struct
+        var point5 = new PointStruct(10, 5);
+        Console.WriteLine($"X: {point5.X}, Y: {point5.Y}");
+        Console.WriteLine(point5.DistanceFromOrigin());
+
+        var point6 = new PointStructComparison(10, 5);
+        Console.WriteLine($"X: {point6.X}, Y: {point6.Y}");
+        Console.WriteLine(point6.DistanceFromOrigin());
+
+        var point7 = new PointStructComparison(10, 5);
+        // custom comparison
+        Console.WriteLine(point6 == point7);
+        Console.WriteLine(point6 != point7);
+        Console.WriteLine(point6.Equals(point7));
+        Console.WriteLine(point6.GetHashCode());
+        Console.WriteLine(point7.GetHashCode());
     }
 
 
