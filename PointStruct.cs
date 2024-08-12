@@ -22,3 +22,7 @@ public readonly struct PointStructComparison(double x, double y) : IEquatable<Po
     public static bool operator ==(PointStructComparison a, PointStructComparison b) => a.Equals(b);
     public static bool operator !=(PointStructComparison a, PointStructComparison b) => !(a == b);
 }
+
+public record PointRecord(int X, int Y);
+public record struct PointStructRecord(int X, int Y);
+public readonly record struct PointReadonlyStructRecord(int X, int Y);

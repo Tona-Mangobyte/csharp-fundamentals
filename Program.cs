@@ -124,6 +124,14 @@ internal class Program
         Console.WriteLine(point6.Equals(point7));
         Console.WriteLine(point6.GetHashCode());
         Console.WriteLine(point7.GetHashCode());
+
+        // Record Struct
+        var point8 = new PointRecord(10, 5);
+        Console.WriteLine($"X: {point8.X}, Y: {point8.Y}");
+        var point9 = new PointStructRecord(10, 5);
+        Console.WriteLine($"X: {point9.X}, Y: {point9.Y}");
+        var point10 = new PointReadonlyStructRecord(10, 5);
+        Console.WriteLine($"X: {point10.X}, Y: {point10.Y}");
     }
 
 
