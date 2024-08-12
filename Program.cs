@@ -75,6 +75,38 @@ internal class Program
         {
             Console.WriteLine(number);
         }
+
+        var counter = new Counter();
+        Console.WriteLine(counter.GetNextValue());
+        Console.WriteLine(counter.GetNextValue());
+
+        var counter2 = new CounterWithPrimaryConstructor(10);
+        Console.WriteLine(counter2.GetNextValue()); 
+        Console.WriteLine(counter2.GetNextValue());
+
+        var counter3 = new CounterWithTotal();
+        Console.WriteLine(counter3.GetNextValue());
+        Console.WriteLine(counter3.GetNextValue());
+        Console.WriteLine(CounterWithTotal.TotalCount);
+
+        var person = new Person();
+        // person.Name = "Tona";
+        person.FavoriteColor = "Black";
+        Console.WriteLine(person.Name);
+        Console.WriteLine(person.FavoriteColor);
+
+        var person2 = new PersonInitializationConstructor("Tona", null);
+        Console.WriteLine(person2.Name);
+        Console.WriteLine(person2.FavoriteColor);
+
+        var person3 = new PersonPrimaryConstructor("Tona", "Black");
+        Console.WriteLine(person3.Name);
+        Console.WriteLine(person3.FavoriteColor);
+
+        var person4 = new PersonModifiableProperties("Tona", "Black");
+        Console.WriteLine(person4.Name);
+        Console.WriteLine(person4.FavoriteColor);
+        
     }
 
 
