@@ -7,6 +7,8 @@ using System;
 
 namespace HelloWorld;
 
+using PointTuple = (int X, int Y);
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -41,5 +43,64 @@ internal class Program
         Console.WriteLine(a);
         Console.WriteLine(b);
         Console.WriteLine(c);
+
+        double width = 3, height = 4;
+        string info = $"Hypotenuse: {Math.Sqrt(width * width + height * height)}";
+        Console.WriteLine(info);
+        string info2 = string.Format("Hypotenuse: {0}",
+            Math.Sqrt(width * width + height * height));
+        Console.WriteLine(info2);
+
+
+        /*string json = MakeRightAngledTriangleJson(width, height);
+        Console.WriteLine(json);
+        string json2 = MakeRightAngledTriangleJson2(width, height);
+        Console.WriteLine(json2);*/
+
+
+        // Tuples
+        (int X, int Y) point = (10, 5);
+        Console.WriteLine($"X: {point.X}, Y: {point.Y}");
+
+        PointTuple center = (20, 10);
+        Console.WriteLine($"X: {center.X}, Y: {center.Y}");
+
+        var point3 = (X: 10, Y: 5);
+        Console.WriteLine($"X: {point3.X}, Y: {point3.Y}");
+
+        (int, int) point4 = (10, 5);
+        Console.WriteLine($"X: {point4.Item1}, Y: {point4.Item2}");
+
+        foreach (int number in numbers1)
+        {
+            Console.WriteLine(number);
+        }
+    }
+
+
+    static string MakeRightAngledTriangleJson(double width, double height)
+    {
+        // Wonky indentation is necessary here to get correctly indented output
+        return @$"{{
+        ""width"": {width},
+        ""height"": {height},
+        ""calculated"": {{
+            ""hypotenuse"": {Math.Sqrt(width * width + height * height)},
+            ""area"": {width * height / 2}
+        }}
+    }}";
+    }
+    static string MakeRightAngledTriangleJson2(double width, double height)
+    {
+        return $$"""
+            {
+                "width": {{width}},
+                "height": {{height}},
+                "calculated": {
+                    "hypotenuse": {{Math.Sqrt(width * width + height * height)}},
+                    "area": {{width * height / 2}}
+                }
+            }
+            """;
     }
 }
