@@ -152,6 +152,36 @@ internal class Program
         Console.WriteLine(item4);
         var item5 = new ItemMultiConstructor(30, "ABC Can");
         Console.WriteLine(item5);
+
+
+        // Passing arguments by reference
+        int result = Divide(10, 3, out int remainder);
+        Console.WriteLine($"Result: {result}, Remainder: {remainder}");
+        int r, q;
+        q = Divide(10, 3, out r);
+        Console.WriteLine($"3: {q}, {r}");
+        q = Divide(10, 4, out r);
+        Console.WriteLine($"4: {q}, {r}");
+        q = Divide(10, 3, out _);
+        Console.WriteLine($"5: {q}");
+
+        // Calling a method with a ref argument
+        long x = 41;
+        Interlocked.Increment(ref x);
+        Console.WriteLine(x);
+
+        // Calling a method with an in parameter
+        var rect = new Rect(10, 20, 100, 100);
+        double area = GetArea(in rect);
+        double area2 = GetArea(rect);
+        Console.WriteLine(area);
+        Console.WriteLine(area2);
+
+        // local ref variable
+        string? rose = null;
+        ref string? rosaIndica = ref rose;
+        rosaIndica = "smell as sweet";
+        Console.WriteLine($"A rose by any other name would {rose}");
         
     }
 
@@ -181,4 +211,16 @@ internal class Program
             }
             """;
     }
+
+    // Passing arguments by reference
+    public static int Divide(int x, int y, out int remainder)
+    {
+        remainder = x % y;
+        return x / y;
+    }
+
+
+    public readonly record struct Rect(double X, double Y, double Width, double Height);
+    // method with an in parameter
+    public static double GetArea(in Rect r) => r.Width * r.Height;
 }
