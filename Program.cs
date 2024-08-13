@@ -212,6 +212,20 @@ internal class Program
         var counter1 = (Counter) 123;
         var v = (int) counter1;
         Console.WriteLine(v);
+
+        // Using a static virtual member
+        ShowHandedness<LeftHanded>();
+        ShowHandedness<DefaultHandedness>();
+
+        // An anonymous type
+        var anonymousType = new { Title = "Lord", Surname = "Voldemort" };
+        Console.WriteLine($"Welcome, {anonymousType.Title} {anonymousType.Surname}");
+
+        // Defining a generic class & generic record
+        var namedContainer = new NamedContainer<int>(42, "The Answer");
+        Console.WriteLine($"{namedContainer.Name}: {namedContainer.Item}");
+        var namedContainer2 = new NamedContainer<string>("Book", "C# 9");
+        Console.WriteLine($"{namedContainer2.Name}: {namedContainer2.Item}");
     }
 
 
@@ -252,4 +266,10 @@ internal class Program
     public readonly record struct Rect(double X, double Y, double Width, double Height);
     // method with an in parameter
     public static double GetArea(in Rect r) => r.Width * r.Height;    
+
+    // Using a static virtual member
+    public static void ShowHandedness<T>() where T : IHanded
+    {
+        Console.WriteLine(T.Side);
+    }
 }
