@@ -132,6 +132,27 @@ internal class Program
         Console.WriteLine($"X: {point9.X}, Y: {point9.Y}");
         var point10 = new PointReadonlyStructRecord(10, 5);
         Console.WriteLine($"X: {point10.X}, Y: {point10.Y}");
+
+
+        // class with a primary constructor and no other constructors
+        var item = new Item(30, "ABC Can");
+        Console.WriteLine(item);
+
+        var item2 = new ItemPrimaryConstructor(30, "ABC Can");
+        Console.WriteLine(item2);
+
+        // Record type with customized copy constructor
+        var itemRecord = new ItemRecord(30, "ABC Can");
+        Console.WriteLine(itemRecord);
+
+        // Multi constructor
+        var item3 = new ItemMultiConstructor();
+        Console.WriteLine(item3);
+        var item4 = new ItemMultiConstructor(30);
+        Console.WriteLine(item4);
+        var item5 = new ItemMultiConstructor(30, "ABC Can");
+        Console.WriteLine(item5);
+        
     }
 
 
