@@ -183,6 +183,35 @@ internal class Program
         rosaIndica = "smell as sweet";
         Console.WriteLine($"A rose by any other name would {rose}");
         
+        // Init-only properties
+        var itemInit = new ItemInit { Price = 30, Name = "ABC Can" };
+        Console.WriteLine(itemInit);
+
+        var pointInit = new PointInit(10, 5);
+        Console.WriteLine($"X: {pointInit.X}, Y: {pointInit.Y}");
+
+        // Required properties
+        var personRequired = new PersonRequired { Name = "Tona", FavoriteColor = "Black" };
+        Console.WriteLine(personRequired.Name);
+        Console.WriteLine(personRequired.FavoriteColor);
+
+        // Indexer
+        var indexed = new Indexed();
+        Console.WriteLine(indexed[3]);
+        Console.WriteLine(indexed?[6]); // Null-conditional index access
+
+        var d = new Dictionary<string, int>
+        {
+            ["One"] = 1,
+            ["Two"] = 2,
+            ["Three"] = 3
+        };
+        Console.WriteLine(d["Two"]);
+
+        // Using explicit conversion operators
+        var counter1 = (Counter) 123;
+        var v = (int) counter1;
+        Console.WriteLine(v);
     }
 
 
@@ -222,5 +251,5 @@ internal class Program
 
     public readonly record struct Rect(double X, double Y, double Width, double Height);
     // method with an in parameter
-    public static double GetArea(in Rect r) => r.Width * r.Height;
+    public static double GetArea(in Rect r) => r.Width * r.Height;    
 }

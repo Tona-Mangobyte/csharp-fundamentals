@@ -7,6 +7,17 @@ public class Counter
         _count++;
         return _count;
     }
+
+    // Conversion operators | Using explicit conversion operators
+    public static explicit operator int(Counter value)
+    {
+        return value._count;
+    }
+
+    public static explicit operator Counter(int value)
+    {
+        return new Counter { _count = value };
+    }
 }
 
 public class CounterWithPrimaryConstructor(int count)

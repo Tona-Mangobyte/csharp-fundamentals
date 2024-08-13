@@ -26,3 +26,9 @@ public readonly struct PointStructComparison(double x, double y) : IEquatable<Po
 public record PointRecord(int X, int Y);
 public record struct PointStructRecord(int X, int Y);
 public readonly record struct PointReadonlyStructRecord(int X, int Y);
+
+public readonly struct PointInit(double x, double y)
+{
+    public double X { get; init; } = x;
+    public double Y { get; init; } = y;
+}

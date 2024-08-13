@@ -50,3 +50,12 @@ public class ItemMultiConstructor
 
     public override string ToString() => $"{_name}: {_price:C}";
 }
+
+// Class with auto-property with init-only setter
+public class ItemInit
+{
+    public decimal? Price { get; init; }
+    public string? Name { get; init; }
+
+    public override string ToString() => $"{Name}: {Price:C}";
+}
